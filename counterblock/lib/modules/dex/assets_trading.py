@@ -122,7 +122,7 @@ def get_asset_info(asset, at_dt=None):
         # BUG: this does not take end_dt (if specified) into account. however, the deviation won't be too big
         # as XCP doesn't deflate quickly at all, and shouldn't matter that much since there weren't any/much trades
         # before the end of the burn period (which is what is involved with how we use at_dt with currently)
-        asset_info['total_issued'] = util.call_jsonrpc_api("get_supply", {'asset': 'XCP'}, abort_on_error=True)['result']
+        asset_info['total_issued'] = util.call_jsonrpc_api("get_supply", {'asset': config.XCP}, abort_on_error=True)['result']
         asset_info['total_issued_normalized'] = blockchain.normalize_quantity(asset_info['total_issued'])
     if not asset_info:
         raise Exception("Invalid asset: %s" % asset)
@@ -161,7 +161,7 @@ def get_xcp_btc_price_info(asset, mps_xcp_btc, xcp_btc_price, btc_xcp_price, wit
             price_in_btc = None
     else:
         # here we take the normal XCP/BTC pair, and invert it to BTC/XCP, to get XCP's data in terms of a BTC base
-        # (this is the only area we do this, as BTC/XCP is NOT standard pair ordering)
+        # (this is the only area we do this, as BTC/XCP is NOT standard p'XCPair ordering)
         price_summary_in_xcp = mps_xcp_btc  # might be None
         price_summary_in_btc = copy.deepcopy(mps_xcp_btc) if mps_xcp_btc else None  # must invert this -- might be None
         if price_summary_in_btc:

@@ -154,7 +154,7 @@ def get_market_price_history(asset1, asset2, start_ts=None, end_ts=None, as_dict
         * If as_dict is False, each embedded list has 8 elements [block time (epoch in MS), open, high, low, close, volume, # trades in block, block index]
         * If as_dict is True, each dict in the list has the keys: block_time (epoch in MS), block_index, open, high, low, close, vol, count
 
-    Aggregate on an an hourly basis 
+    Aggregate on an an hourly basis
     """
     now_ts = calendar.timegm(time.gmtime())
     if not end_ts:  # default to current datetime
@@ -498,7 +498,7 @@ def get_order_book_buysell(buy_asset, sell_asset, pct_fee_provided=None, pct_fee
 
 @API.add_method
 def get_users_pairs(addresses=[], max_pairs=12):
-    return dex.get_users_pairs(addresses, max_pairs, quote_assets=['XCP', 'XBTC'])
+    return dex.get_users_pairs(addresses, max_pairs, quote_assets=[config.XCP, 'X' + config.BTC])
 
 
 @API.add_method

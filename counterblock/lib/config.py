@@ -17,22 +17,22 @@ REGULAR_DUST_SIZE = 5430
 MULTISIG_DUST_SIZE = 5430 * 2
 ORDER_BTC_DUST_LIMIT_CUTOFF = MULTISIG_DUST_SIZE
 
-BTC = 'BTC'
-XCP = 'XCP'
+BTC = 'LTC'
+XCP = 'XLP'
 
-BTC_NAME = "Bitcoin"
-XCP_NAME = "Counterparty"
-APP_NAME = "counterblock"
+BTC_NAME = "Litecoin"
+XCP_NAME = "Liteparty"
+APP_NAME = "liteblock"
 COUNTERPARTY_APP_NAME = XCP_NAME.lower()
 
 MAX_REORG_NUM_BLOCKS = 10  # max reorg we'd likely ever see
 MAX_FORCED_REORG_NUM_BLOCKS = 20  # but let us go deeper when messages are out of sync
 
-QUOTE_ASSETS = ['BTC', 'XBTC', 'XCP']  # define the priority for quote asset
-MARKET_LIST_QUOTE_ASSETS = ['XCP', 'XBTC', 'BTC']  # define the order in the market list
+QUOTE_ASSETS = ['LTC', 'XLTC', 'XLP']  # define the priority for quote asset
+MARKET_LIST_QUOTE_ASSETS = ['XLP', 'XLTC', 'LTC']  # define the order in the market list
 
-DEFAULT_BACKEND_PORT_TESTNET = 18332
-DEFAULT_BACKEND_PORT = 8332
+DEFAULT_BACKEND_PORT_TESTNET = 19332
+DEFAULT_BACKEND_PORT = 9332
 
 DEFAULT_LOG_SIZE_KB = 20000
 DEFAULT_LOG_NUM_FILES = 5
@@ -76,9 +76,9 @@ def init_base(args):
     # first block
     global BLOCK_FIRST
     if TESTNET:
-        BLOCK_FIRST = 310000
+        BLOCK_FIRST = 449684
     else:
-        BLOCK_FIRST = 278270
+        BLOCK_FIRST = 1381242
 
     global LATEST_BLOCK_INIT
     LATEST_BLOCK_INIT = {'block_index': BLOCK_FIRST, 'block_time': None, 'block_hash': None}
